@@ -1,0 +1,44 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 78px;
+}
+
+.card-row {
+  display: flex;
+  gap: 24px;
+  margin: 25px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-items: center;
+}
+
+.use-model-btn {
+  padding: 15px 42px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background: #9b7bfa;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.use-model-btn:hover {
+  background: #9372f8;
+}
+
+@media (max-width: 900px) {
+  .card-row {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .card-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}
