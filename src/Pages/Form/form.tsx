@@ -130,6 +130,7 @@ const Formulario: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     setResult(null);
+    console.log(result);
     try {
       const res = await apiService.predict(form);
       // Guarda el resultado en localStorage
@@ -262,14 +263,6 @@ const Formulario: React.FC = () => {
         {loading ? "Enviando..." : "Enviar"}
       </button>
 
-      {result && (
-        <div className="resultado">
-          <h3>Resultado</h3>
-          <p>Predicción: {result.prediction}</p>
-          <p>Probabilidad: {(result.probability * 100).toFixed(2)}%</p>
-          <p>{result.interpretation}</p>
-        </div>
-      )}
     </form>
     </div>
   );
