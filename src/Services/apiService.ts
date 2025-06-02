@@ -6,7 +6,7 @@ const API_URL = 'http://127.0.0.1:8000';
 const apiService = {
   async predict(data: PredictionRequest): Promise<PredictionResponse> {
     const response = await axios.post<PredictionResponse>(
-      `${API_URL}/predict`,
+      `${API_URL}/api/v1/predict`,
       data
     );
     return response.data;
