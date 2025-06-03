@@ -100,7 +100,7 @@ const degreeOptions = [
 
 const initialState: PredictionRequest = {
   gender: "",
-  age: 18,
+  age: 0,
   city: "",
   sleep_hours: "",
   diet: "",
@@ -178,7 +178,7 @@ const Formulario: React.FC = () => {
               type="number"
               min={10}
               max={100}
-              value={form.age}
+              value={form.age || ""}
               onChange={(e) => handleChange("age", Number(e.target.value))}
             />
           </div>
@@ -205,7 +205,7 @@ const Formulario: React.FC = () => {
               type="number"
               min={0}
               max={24}
-              value={form.hours_dedicated}
+              value={form.hours_dedicated || ""}
               onChange={(e) => handleChange("hours_dedicated", Number(e.target.value))}
             />
           </div>
