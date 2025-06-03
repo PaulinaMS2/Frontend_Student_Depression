@@ -42,3 +42,28 @@
     gap: 16px;
   }
 }
+
+.info-modelo-modal {
+    text-align: start;
+    justify-content: center;
+    max-width: 900px;
+    width: 90vw;
+    padding: 15px 15px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    .info-modelo-modal {
+        max-width: 98vw;
+        padding: 16px 6px;
+        font-size: 0.95rem;
+    }
+    .info-modelo-modal h3, 
+    .info-modelo-modal h4 {
+        font-size: 1.1rem;
+    }
+    .info-modelo-modal ul {
+        padding-left: 1em;
+    }
+}

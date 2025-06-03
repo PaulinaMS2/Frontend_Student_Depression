@@ -12,6 +12,11 @@ const Home: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [result, setResult] = useState<PredictionResponse | null>(null);
 
+  // Estado para el modal de información del modelo
+  const [infoModalOpen, setInfoModalOpen] = useState(false);
+  // Estado para el modal de "¿Cómo funciona?"
+  const [howModalOpen, setHowModalOpen] = useState(false);
+
   useEffect(() => {
     const stored = localStorage.getItem("predictionResult");
     if (stored) {
@@ -34,10 +39,10 @@ const Home: React.FC = () => {
         <Card height="80px">
           <h2>¿Quienes somos?</h2>
         </Card>
-        <Card height="80px">
+        <Card height="80px" onClick={() => setInfoModalOpen(true)}>
           <h2>Información del modelo</h2>
         </Card>
-        <Card height="80px">
+        <Card height="80px" onClick={() => setHowModalOpen(true)}>
           <h2>¿Cómo funciona?</h2>
         </Card>
       </div>
@@ -47,6 +52,8 @@ const Home: React.FC = () => {
       >
         Usar modelo
       </button>
+  
+      {/* Modal de resultado */}
       <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
         {result && (
           <div className="resultado">
@@ -62,11 +69,51 @@ const Home: React.FC = () => {
             </div>
             <div style={{ marginTop: "1em", color: "#b10000", fontWeight: 500 }}>
               ⚠️  Este resultado es una estimación estadística
-              
             </div>
         </div>
       )}
     </Modal>
+      {/* Modal de información del modelo */}
+      <Modal isOpen={infoModalOpen} onClose={() => setInfoModalOpen(false)}>
+        <div className="info-modelo-modal">
+          <h3>Información del modelo</h3>
+          <ul style={{ paddingLeft: "1.2em" }}>
+            <li><b>Tipo de modelo:</b> Random Forest (Bosque Aleatorio)</li>
+            <li><b>Algoritmo base:</b> Aprendizaje supervisado – clasificación binaria</li>
+            <li><b>Conjunto de datos utilizado:</b> Student Depression Dataset – Kaggle (población: estudiantes universitarios en la India)</li>
+            <li><b>Población objetivo:</b> Estudiantes universitarios</li>
+            <li><b>Variables consideradas:</b> - Género - Edad - Ciudad de residencia - Horas de sueño - Tipo de alimentación - Horas dedicadas al estudio/trabajo diariamente - Antecedentes de enfermedades mentales - Nivel de satisfacción con los estudios - Estrés financiero - Presión académica - Promedio académico (CGPA) - Nivel educativo</li>
+            <li><b>Objetivo del modelo:</b> Predecir si un estudiante muestra o no indicadores compatibles con depresión, a partir de variables relacionadas con su estilo de vida, entorno académico y bienestar emocional.</li>
+          </ul>
+          <h4>Métricas de desempeño:</h4>
+          <ul style={{ paddingLeft: "1.2em" }}>
+            <li>Precisión (Accuracy)</li>
+            <li>Recall (Sensibilidad)</li>
+            <li>F1-Score</li>
+            <li>Matriz de Confusión </li>
+          </ul>
+        </div>
+      </Modal>
+      {/* Modal de cómo funciona */}
+      <Modal isOpen={howModalOpen} onClose={() => setHowModalOpen(false)}>
+        <div className="info-modelo-modal">
+          <h3>¿Cómo funciona?</h3>
+          <p>
+            Este sistema utiliza un modelo de inteligencia artificial que fue entrenado con información de estudiantes universitarios de la India. 
+            A partir de sus respuestas sobre temas como presión académica, calidad del sueño, alimentación, antecedentes familiares, edad, género,
+            el modelo aprende a detectar patrones que suelen estar presentes en casos compatibles con depresión.
+          </p>
+          <p>
+            Antes de construir el modelo, los datos fueron preparados cuidadosamente: se limpiaron errores, se transformaron respuestas en valores numéricos y se organizaron de forma que el modelo pudiera analizarlos de manera eficiente.
+          </p>
+          <p>
+            El tipo de modelo utilizado se llama <b>"Random Forest"</b>, una técnica que toma decisiones combinando muchos árboles que evalúan diferentes aspectos de la información. Esta estrategia permite tener una visión más completa y precisa.
+          </p>
+          <p>
+            El sistema no se basa en una única señal, sino en la combinación de varios factores. Por eso, incluso si una variable no parece crítica por sí sola, puede influir en el resultado final cuando se analiza junto a otras.
+          </p>
+        </div>
+      </Modal>
     </div>
   );
 };
