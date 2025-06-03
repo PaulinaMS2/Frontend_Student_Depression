@@ -1,8 +1,10 @@
+
 .form-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 12px 78px;
+    justify-content: center;
+    width: 96%;
 }
 
 body::-webkit-scrollbar {

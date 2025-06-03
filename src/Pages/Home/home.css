@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px 78px;
+  padding: 10px;
 }
 
 .card-row {
