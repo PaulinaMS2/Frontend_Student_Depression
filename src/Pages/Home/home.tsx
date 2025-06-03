@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import Card from "../../Components/Card/card";
 import "./home.css";
 import imagenHome from "../../assets/Imagen.png";
+import foto1 from "../../assets/Jero.jpeg"; 
+import foto2 from "../../assets/Manu.jpeg";
+import foto3 from "../../assets/Pau.jpeg";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Modal from "../../Components/Modal/modal";
@@ -16,6 +19,8 @@ const Home: React.FC = () => {
   const [infoModalOpen, setInfoModalOpen] = useState(false);
   // Estado para el modal de "¿Cómo funciona?"
   const [howModalOpen, setHowModalOpen] = useState(false);
+  // Estado para el modal de "¿Quiénes somos?"
+  const [aboutModalOpen, setAboutModalOpen] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("predictionResult");
@@ -36,7 +41,7 @@ const Home: React.FC = () => {
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
       />
       <div className="card-row">
-        <Card height="80px">
+        <Card height="80px" onClick={() => setAboutModalOpen(true)}>
           <h2>¿Quienes somos?</h2>
         </Card>
         <Card height="80px" onClick={() => setInfoModalOpen(true)}>
@@ -52,14 +57,14 @@ const Home: React.FC = () => {
       >
         Usar modelo
       </button>
-  
+
       {/* Modal de resultado */}
       <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
         {result && (
           <div className="resultado">
             <h3>🧠 Resultado del análisis</h3>
-            <p>🔢 <b>Predicción técnica:</b> {result.prediction} <br/> 
-            {result.interpretation} </p>
+            <p>🔢 <b>Predicción técnica:</b> {result.prediction} <br />
+              {result.interpretation} </p>
             <p>📊 <b>Probabilidad estimada:</b> {(result.probability * 100).toFixed(2)}%</p>
             <div style={{ marginTop: "1em" }}>
               <p style={{ margin: 0 }}>
@@ -70,9 +75,9 @@ const Home: React.FC = () => {
             <div style={{ marginTop: "1em", color: "#b10000", fontWeight: 500 }}>
               ⚠️  Este resultado es una estimación estadística
             </div>
-        </div>
-      )}
-    </Modal>
+          </div>
+        )}
+      </Modal>
       {/* Modal de información del modelo */}
       <Modal isOpen={infoModalOpen} onClose={() => setInfoModalOpen(false)}>
         <div className="info-modelo-modal">
@@ -99,7 +104,7 @@ const Home: React.FC = () => {
         <div className="info-modelo-modal">
           <h3>¿Cómo funciona?</h3>
           <p>
-            Este sistema utiliza un modelo de inteligencia artificial que fue entrenado con información de estudiantes universitarios de la India. 
+            Este sistema utiliza un modelo de inteligencia artificial que fue entrenado con información de estudiantes universitarios de la India.
             A partir de sus respuestas sobre temas como presión académica, calidad del sueño, alimentación, antecedentes familiares, edad, género,
             el modelo aprende a detectar patrones que suelen estar presentes en casos compatibles con depresión.
           </p>
@@ -112,6 +117,56 @@ const Home: React.FC = () => {
           <p>
             El sistema no se basa en una única señal, sino en la combinación de varios factores. Por eso, incluso si una variable no parece crítica por sí sola, puede influir en el resultado final cuando se analiza junto a otras.
           </p>
+        </div>
+      </Modal>
+      {/* Modal de quienes somos */}
+      <Modal isOpen={aboutModalOpen} onClose={() => setAboutModalOpen(false)}>
+        <div className="info-modelo-modal" style={{ textAlign: "center" }}>
+          
+          <div style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "5em",
+            marginBottom: "1.5em",
+            flexWrap: "wrap"
+          }}>
+            <div>
+              <img src={foto1} alt="Jero" style={{
+                width: 100, height: 100, borderRadius: "50%", objectFit: "cover", border: "3px solid #a78bfa"
+              }} />
+              <div style={{
+                marginTop: 8,
+                fontFamily: "'Pacifico', cursive, sans-serif",
+                fontSize: "1.1em",
+                color: "#7e0275"
+              }}>Jerónimo Bedoya</div>
+            </div>
+            <div>
+              <img src={foto2} alt="Manu" style={{
+                width: 100, height: 100, borderRadius: "50%", objectFit: "cover", border: "3px solid #a78bfa"
+              }} />
+              <div style={{
+                marginTop: 8,
+                fontFamily: "'Pacifico', cursive, sans-serif",
+                fontSize: "1.1em",
+                color: "#7e0275"
+              }}>Manuela Moreno</div>
+            </div>
+            <div>
+              <img src={foto3} alt="Pau" style={{
+                width: 100, height: 100, borderRadius: "50%", objectFit: "cover", border: "3px solid #a78bfa"
+              }} />
+              <div style={{
+                marginTop: 8,
+                fontFamily: "'Pacifico', cursive, sans-serif",
+                fontSize: "1.1em",
+                color: "#7e0275"
+              }}>Paulina Muñoz</div>
+            </div>
+          </div>
+          <div style={{ marginTop: 12, fontSize: "1.05em" }}>
+            Este proyecto fue desarrollado con fines educativos, como parte de nuestro proyecto para el módulo  <b> Proyecto I </b> en la especialización en ciencia de datos e IA en Universidad de Medellín.
+          </div>
         </div>
       </Modal>
     </div>
