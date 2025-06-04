@@ -87,6 +87,7 @@ const pressureOptions = [
 
 const cgpaOptions = [
   { label: "Bajo", value: "bajo" },
+  {label: "Medio", value:"medio"},
   { label: "Medio alto", value: "medio alto" },
   { label: "Alto", value: "alto" },
   
