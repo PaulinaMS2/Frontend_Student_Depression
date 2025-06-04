@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { PredictionRequest, PredictionResponse } from './types';
 
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = 'https://api-student-depression.onrender.com'; 
 
 const apiService = {
   async predict(data: PredictionRequest): Promise<PredictionResponse> {
