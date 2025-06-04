@@ -78,16 +78,18 @@ const stressOptions = [
 ];
 
 const pressureOptions = [
-  { label: "Alto", value: "alto" },
+  { label: "Bajo", value: "bajo" },
   { label: "Medio", value: "medio" },
   { label: "Medio alto", value: "medio alto" },
-  { label: "Bajo", value: "bajo" },
+  { label: "Alto", value: "alto" },
+
 ];
 
 const cgpaOptions = [
-  { label: "Alto", value: "alto" },
-  { label: "Medio alto", value: "medio alto" },
   { label: "Bajo", value: "bajo" },
+  { label: "Medio alto", value: "medio alto" },
+  { label: "Alto", value: "alto" },
+  
 ];
 
 const degreeOptions = [
